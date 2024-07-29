@@ -1,20 +1,20 @@
 version: "3.9"
 services:
-  work-fusion-php:
+  welcome-to-dubai-php:
     build:
       context: .
       args:
         XDEBUG_CLIENT_HOST: ${XDEBUG_CLIENT_HOST}
       dockerfile: ./docker/php/Dockerfile
-    container_name: work-fusion-php
+    container_name: welcome-to-dubai-php
     networks:
-      work-fusion:
+      welcome-to-dubai:
         ipv4_address: ${SUBNET}.2
     volumes:
       - "./docker/php/etc/php.ini:/usr/local/etc/php/conf.d/php.ini"
       - "./docker/php/logs/:/var/log/php-fpm/"
       - "./docker/php/lock:/lock/"
-      - "./:/var/www/html/work-fusion/"
+      - "./:/var/www/html/welcome-to-dubai/"
     environment:
       - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
       - XDEBUG_SESSION=${XDEBUG_SESSION}
@@ -27,28 +27,28 @@ services:
     extra_hosts:
       - "${NGINX_HOST_SERVER}:${SUBNET}.4"
     depends_on:
-      - work-fusion-db
-  work-fusion-db:
+      - welcome-to-dubai-db
+  welcome-to-dubai-db:
     image: postgres:latest
-    container_name: work-fusion-db
+    container_name: welcome-to-dubai-db
     ports:
       - "${PGSQL_PORT}:5432"
     environment:
       POSTGRES_USER: ${PG_USER}
       POSTGRES_PASSWORD: ${PG_PASS}
     networks:
-      work-fusion:
+      welcome-to-dubai:
         ipv4_address: ${SUBNET}.3
     volumes:
       - ./docker/pgsql/data:/var/lib/postgresql/data
       - ./docker/pgsql/init:/docker-entrypoint-initdb.d
-  work-fusion-web:
+  welcome-to-dubai-web:
     image: nginx:alpine
-    container_name: work-fusion-web
+    container_name: welcome-to-dubai-web
     volumes:
       - "./docker/nginx/conf/default.conf:/etc/nginx/conf.d/default.conf"
       - "./docker/nginx/conf/default.template.conf:/etc/nginx/conf.d/default.template"
-      - "./:/var/www/html/work-fusion"
+      - "./:/var/www/html/welcome-to-dubai"
       - "./docker/nginx/logs/access.log:/var/logs/nginx/access.log"
       - "./docker/nginx/logs/error.log:/var/logs/nginx/error.log"
       - "./docker/nginx/etc/ssl:/etc/ssl"
@@ -58,13 +58,13 @@ services:
     environment:
       - NGINX_HOST_SERVER=${NGINX_HOST_SERVER}
     networks:
-      work-fusion:
+      welcome-to-dubai:
         ipv4_address: ${SUBNET}.4
     command: /bin/sh -c "envsubst '$$NGINX_HOST_SERVER $$NGINX_HOST_CLIENT' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     depends_on:
-      - work-fusion-php
+      - welcome-to-dubai-php
 networks:
-  work-fusion:
+  welcome-to-dubai:
     driver: bridge
     ipam:
       driver: default

@@ -7,7 +7,7 @@ init:
 	@if [ ! -e docker/php/logs/error.log ]; then touch docker/php/logs/error.log; fi
 	@if [ ! -e docker/nginx/logs/access.log ]; then touch docker/nginx/logs/access.log docker/nginx/logs/error.log; fi
 	docker compose up --build -d
-	docker exec work-fusion-php composer install
+	docker exec welcome-to-dubai-php composer install
 build:
 	docker compose build --pull --no-cache
 start:
@@ -17,10 +17,10 @@ up:
 down:
 	docker compose down
 ver:
-	docker exec work-fusion-php php -v
+	docker exec welcome-to-dubai-php php -v
 
 #vendors
 composeri:
-	docker exec work-fusion-php composer update -W
+	docker exec welcome-to-dubai-php composer update -W
 npmi:
-	docker exec work-fusion-php npm i
+	docker exec welcome-to-dubai-php npm i
