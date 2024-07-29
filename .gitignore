@@ -1,0 +1,20 @@
+###> local/environment ###
+/.idea
+/.env
+/.DS_Store
+/dumps
+!/dump/.gitkeep
+###< local/environment ###
+
+###> docker ###
+/docker-compose.override.yml
+/docker/pgsql/data
+/docker/php/logs
+/docker/php/lock
+/docker/nginx/logs
+/docker/db/data/
+###< docker ###
+
+/.env.local
+/vendor/
+
