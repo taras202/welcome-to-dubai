@@ -1,0 +1,1 @@
+CREATE DATABASE welcome_to_dubai;
