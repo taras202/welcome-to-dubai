@@ -7,13 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property string $name
  * @property string $email
  * @property string $password
- * @property int $status
  */
 
 class Admins extends Model
 {
+    protected $table = 'customAdmin';
+
     use HasFactory;
+
+    protected $fillable = [
+        'email',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

@@ -11,8 +11,7 @@
 
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container">
-          <a class="navbar-brand" href="{{ URL('/') }}">Custom Login Register</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -50,12 +49,10 @@
         @yield('content')
         <div class="row justify-content-center text-center mt-3">
             <div class="col-md-12">
-                <p>Back to Tutorial: 
-                    <a href="https://www.allphptricks.com/laravel-custom-user-registration-and-login-tutorial/"><strong>Tutorial Link</strong></a>
-                </p>
-                <p>
-                    For More Web Development Tutorials Visit: <a href="https://www.allphptricks.com/"><strong>AllPHPTricks.com</strong></a>
-                </p>
+               
+                   
+       
+                    
             </div>
         </div>
     </div>

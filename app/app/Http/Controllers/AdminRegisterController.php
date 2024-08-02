@@ -27,13 +27,11 @@ class AdminRegisterController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'phone' => 'required|string|max:250|unique:users',
-            'email' => 'required|email|max:250|unique:users',
+            'email' => 'required|email|max:250|unique:admins',
             'password' => 'required|min:8|confirmed'
         ]);
 
         Admins::create([
-            'phone' => $request->phone,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
