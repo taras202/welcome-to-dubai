@@ -19,30 +19,6 @@ class AdminRegisterController extends Controller
         ]);
     }
 
-    public function register()
-    {
-        return view('auth.register');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email|max:250|unique:admins',
-            'password' => 'required|min:8|confirmed'
-        ]);
-
-        Admins::create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-
-        $credentials = $request->only('email', 'password');
-        Auth::attempt($credentials);
-        $request->session()->regenerate();
-        return redirect()->route('dashboard')
-        ->withSuccess('You have successfully registered & logged in!');
-    }
-
     public function login()
     {
         return view('auth.login');
@@ -65,7 +41,7 @@ class AdminRegisterController extends Controller
         return back()->withErrors([
             'email' => 'Your provided credentials do not match in our records.',
         ])->onlyInput('email');
-    } 
+    }
 
     public function dashboard()
     {
@@ -73,12 +49,12 @@ class AdminRegisterController extends Controller
         {
             return view('auth.dashboard');
         }
-        
+
         return redirect()->route('login')
             ->withErrors([
             'email' => 'Please login to access the dashboard.',
         ])->onlyInput('email');
-    } 
+    }
 
     public function logout(Request $request)
     {
@@ -86,6 +62,6 @@ class AdminRegisterController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login')
-            ->withSuccess('You have logged out successfully!');;
-    }    
+            ->withSuccess('You have logged out successfully!');
+    }
 }
