@@ -11,10 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('custom_admins', function (Blueprint $table) {
-            $table->id();
+        Schema::create('requests', function (Blueprint $table) {
+    
+        $table->id();
+            $table->string('phone');
+            $table->string('email');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->integer('status');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -22,6 +29,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('custom_admins');
+        Schema::dropIfExists('requests');
     }
 };
+

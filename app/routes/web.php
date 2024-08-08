@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminRegisterController;
+use App\Http\Controllers\LeadsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/register', function () {
@@ -15,4 +16,6 @@ Route::controller(AdminRegisterController::class)->group(function() {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
-// /register -> new adminRegisterController->register();
+
+Route::resource('leads', LeadsController::class);
+
