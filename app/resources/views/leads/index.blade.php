@@ -24,7 +24,11 @@
                             <th>ID</th>
                             <th>Phone</th>
                             <th>Email</th>
-                            <th>Password</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Call Date</th>
+                            <th>Call Result</th>
+                            <th>Next Call Date</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -35,7 +39,11 @@
                                 <td>{{ $lead->id }}</td>
                                 <td>{{ $lead->phone }}</td>
                                 <td>{{ $lead->email }}</td>
-                                <td>{{ $lead->password }}</td>
+                                <td>{{ $lead->first_name }}</td>
+                                <td>{{ $lead->last_name }}</td>
+                                <td>{{ $lead->call_date }}</td>
+                                <td>{{ $lead->call_result }}</td>
+                                <td>{{ $lead->next_call_date }}</td>
                                 <td>
                                     <span class="badge {{ $lead->status == 1 ? 'bg-success' : 'bg-secondary' }}">
                                         {{ $lead->status == 1 ? 'Active' : 'Inactive' }}

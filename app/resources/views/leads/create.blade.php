@@ -23,6 +23,26 @@
                         <input type="email" name="email" id="email" class="form-control" required>
                     </div>
                     <div class="mb-3">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="first_name" name="first_name" id="first_name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="last_name" name="last_name" id="last_name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="call_date" class="form-label">Call Date</label>
+                        <input type="call_date" name="call_date" id="call_date" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="call_result" class="form-label">Call Result</label>
+                        <input type="call_result" name="call_result" id="call_result" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="next_call_date" class="form-label">Next Call Date</label>
+                        <input type="next_call_date" name="next_call_date" id="next_call_date" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select name="status" id="status" class="form-select" required>
                             <option value="1">Active</option>
