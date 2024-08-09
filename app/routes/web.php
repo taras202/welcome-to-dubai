@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminRegisterController;
 use App\Http\Controllers\LeadsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RequestController;
+
 
 Route::get('/admin/register', function () {
     return view('welcome');
@@ -18,4 +20,10 @@ Route::controller(AdminRegisterController::class)->group(function() {
 });
 
 Route::resource('leads', LeadsController::class);
+
+Route::get('/', function () {
+    return view('dashbord');
+})->name('dashbord');
+
+Route::resource('requests', RequestController::class);
 

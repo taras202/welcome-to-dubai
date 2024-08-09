@@ -20,7 +20,7 @@ class LeadsController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('leads.create');
     }
@@ -31,7 +31,7 @@ class LeadsController
      */
     public function store(Request $request)
 {
-    $request->validate([
+    $result = $request->validate([
         'phone' => 'required',
         'email' => 'required|email|unique:leads',
         'first_name' => 'required',
@@ -40,6 +40,7 @@ class LeadsController
         'request_id' => '',
 
     ]);
+    dd($result);
 
     Leads::create($request->all());
 

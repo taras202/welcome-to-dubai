@@ -1,64 +1,66 @@
 <?php
 
+// app/Http/Controllers/RequestController.php
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Request;
+use Illuminate\Http\Request as HttpRequest;
 
 class RequestController
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $requests = Request::all();
+        return view('requests.index', compact('requests'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('requests.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(HttpRequest $request)
     {
-        //
+        $request->validate([
+            'phone' => 'required|string|max:15',
+            'email' => 'required|email|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'status' => 'required|integer'
+        ]);
+
+        Request::create($request->all());
+        return redirect()->route('requests.index')->with('success', 'Request created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        return view('requests.show', compact('request'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
-        //
+        return view('requests.edit', compact('request'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(HttpRequest $request, Request $requestModel)
     {
-        //
+        $request->validate([
+            'phone' => 'required|string|max:15',
+            'email' => 'required|email|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'status' => 'required|integer'
+        ]);
+
+        $requestModel->update($request->all());
+        return redirect()->route('requests.index')->with('success', 'Request updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $request->delete();
+        return redirect()->route('requests.index')->with('success', 'Request deleted successfully.');
     }
 }

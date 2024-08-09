@@ -9,10 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
     <div class="container mt-5">
-        <h1>Create New Lead</h1>
+        <h1>Create New Requests</h1>
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('leads.store') }}" method="POST">
+                <form action="{{ route('requests.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone</label>
@@ -32,16 +32,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="call_date" class="form-label">Call Date</label>
-                        <input type="datetime-local"name="call_date" id="call_date" class="form-control" >
-                        
+                        <input type="datetime-local" name="call_date" id="call_date" class="form-control" >
                     </div>
                     <div class="mb-3">
                         <label for="call_result" class="form-label">Call Result</label>
-                        <input type="datetime-local"name="call_result" id="call_result" class="form-control" >
+                        <input type="datetime-local" name="call_result" id="call_result" class="form-control" >
                     </div>
                     <div class="mb-3">
                         <label for="next_call_date" class="form-label">Next Call Date</label>
-                        <input type="datetime-local"name="next_call_date" id="next_call_date" class="form-control" >
+                        <input type="datetime-local" name="next_call_date" id="next_call_date" class="form-control" >
                     </div>
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
@@ -51,7 +50,7 @@
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
-                    <a href="{{ route('leads.index') }}" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('requests.index') }}" class="btn btn-secondary">Cancel</a>
                 </form>
             </div>
         </div>
