@@ -20,7 +20,7 @@ class LeadsController
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
         return view('leads.create');
     }
@@ -30,23 +30,24 @@ class LeadsController
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $result = $request->validate([
-        'phone' => 'required',
-        'email' => 'required|email|unique:leads',
-        'first_name' => 'required',
-        'last_name' => 'required',
-        'status' => 'required',
-        'request_id' => '',
+    {
+        $result = $request->validate([
+            'phone' => 'required',
+            'email' => 'required|email|unique:leads',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'status' => 'required',
+            'request_id' => '',
+            'call_date' => 'date',
+            'call_result' => 'string',
+            'next_call_date' => 'date',
+        ]);
 
-    ]);
-    dd($result);
+        Leads::create($request->all());
 
-    Leads::create($request->all());
-
-    return redirect()->route('leads.index')
-                     ->with('success', 'Lead created successfully.');
-}
+        return redirect()->route('leads.index')
+            ->with('success', 'Lead created successfully.');
+    }
 
 
     /**
@@ -56,7 +57,7 @@ class LeadsController
     {
         return view('leads.show', compact('lead'));
     }
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -65,37 +66,37 @@ class LeadsController
     {
         return view('leads.edit', compact('lead'));
     }
-    
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Leads $leads)
-{
-    $request->validate([
-        'phone' => 'required',
-        'email' => 'required|email|unique:leads,email,' . $leads->id,
-        'first_name' => 'required',
-        'last_name' => 'required',
-        'status' => 'required',
-    ]);
+    {
+        $request->validate([
+            'phone' => 'required',
+            'email' => 'required|email|unique:leads,email,' . $leads->id,
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'status' => 'required',
+        ]);
 
-    $leads->update($request->all());
+        $leads->update($request->all());
 
-    return redirect()->route('leads.index')
-                     ->with('success', 'Lead updated successfully.');
-}
+        return redirect()->route('leads.index')
+            ->with('success', 'Lead updated successfully.');
+    }
 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Leads $leads)
+    public function destroy(Leads $lead)
     {
-        $leads->delete();
-    
+        $lead->delete();
+
         return redirect()->route('leads.index')
-                         ->with('success', 'Lead deleted successfully.');
+            ->with('success', 'Lead deleted successfully.');
     }
-    
+
 }

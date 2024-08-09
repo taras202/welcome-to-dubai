@@ -14,6 +14,15 @@
             <div class="card-body">
                 <form action="{{ route('leads.store') }}" method="POST">
                     @csrf
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone</label>
                         <input type="text" name="phone" id="phone" class="form-control" required>
@@ -28,20 +37,21 @@
                     </div>
                     <div class="mb-3">
                         <label for="last_name" class="form-label">Last Name</label>
-                        <input type="last_name" name="last_name" id="last_name" class="form-control" required>
+                        <input type="text" name="last_name" id="last_name" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="call_date" class="form-label">Call Date</label>
-                        <input type="datetime-local"name="call_date" id="call_date" class="form-control" >
-                        
+                        <input type="text" name="call_date" id="call_date" class="form-control" >
+
                     </div>
                     <div class="mb-3">
                         <label for="call_result" class="form-label">Call Result</label>
-                        <input type="datetime-local"name="call_result" id="call_result" class="form-control" >
+                        <textarea name="call_result" id="call_result" class="form-control" ></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="next_call_date" class="form-label">Next Call Date</label>
-                        <input type="datetime-local"name="next_call_date" id="next_call_date" class="form-control" >
+                        <input type="text" name="next_call_date" id="next_call_date" class="form-control" >
+
                     </div>
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>

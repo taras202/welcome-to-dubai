@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('leads', function (Blueprint $table) {
-    
+
             $table->id();
             $table->string('phone');
             $table->string('email');
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->integer('status');
             $table->dateTime('call_date')->nullable();
-            $table->dateTime('call_result')->nullable();
+            $table->text('call_result')->nullable();
             $table->dateTime('next_call_date')->nullable();
             $table->integer('request_id')->nullable();
             $table->foreign('request_id')->references('id')->on('requests');

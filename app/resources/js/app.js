@@ -1,1 +1,1 @@
-import './bootstrap';
+$('#call_date').datepicker();

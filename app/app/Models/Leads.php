@@ -14,6 +14,9 @@ class Leads extends Model
         'first_name',
         'last_name',
         'status',
+        'call_date',
+        'call_result',
+        'next_call_date',
     ];
 }
 
