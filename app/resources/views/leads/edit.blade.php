@@ -24,6 +24,14 @@
                         <input type="email" name="email" id="email" class="form-control" value="{{ $lead->email }}" required>
                     </div>
                     <div class="mb-3">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="first_name" name="first_name" id="first_name" class="form-control" value="{{ $lead->first_name }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="last_name" name="last_name" id="last_name" class="form-control" value="{{ $lead->last_name }}" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select name="status" id="status" class="form-select" required>
                             <option value="1" {{ $lead->status == 1 ? 'selected' : '' }}>Active</option>

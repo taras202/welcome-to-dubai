@@ -17,6 +17,8 @@
             <div class="card-body">
                 <p><strong>Phone:</strong> {{ $lead->phone }}</p>
                 <p><strong>Email:</strong> {{ $lead->email }}</p>
+                <p><strong>First Name:</strong> {{ $lead->first_name }}</p>
+                <p><strong>Last Name:</strong> {{ $lead->last_name }}</p>
                 <p><strong>Status:</strong> 
                     <span class="badge {{ $lead->status == 1 ? 'bg-success' : 'bg-secondary' }}">
                         {{ $lead->status == 1 ? 'Active' : 'Inactive' }}

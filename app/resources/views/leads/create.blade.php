@@ -32,15 +32,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="call_date" class="form-label">Call Date</label>
-                        <input type="call_date" name="call_date" id="call_date" class="form-control" required>
+                        <input type="call_date" name="call_date" id="call_date" class="form-control" >
                     </div>
                     <div class="mb-3">
                         <label for="call_result" class="form-label">Call Result</label>
-                        <input type="call_result" name="call_result" id="call_result" class="form-control" required>
+                        <input type="call_result" name="call_result" id="call_result" class="form-control" >
                     </div>
                     <div class="mb-3">
                         <label for="next_call_date" class="form-label">Next Call Date</label>
-                        <input type="next_call_date" name="next_call_date" id="next_call_date" class="form-control" required>
+                        <input type="next_call_date" name="next_call_date" id="next_call_date" class="form-control" >
                     </div>
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
